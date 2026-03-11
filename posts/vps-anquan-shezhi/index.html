@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro v5.17.3"><link rel="canonical" href="https://cliatlas.com/posts/vps-anquan-shezhi/"><!-- SEO Meta --><title>新买的VPS第一步该做什么：安全初始化指南 - 主机评测笔记</title><meta name="description" content="VPS到手后的安全初始化步骤，包括SSH安全配置、防火墙设置、自动更新等，保护你的服务器不被入侵。"><meta name="keywords" content="VPS安全设置, VPS初始化, 服务器安全配置"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://cliatlas.com/posts/vps-anquan-shezhi/"><meta property="og:title" content="新买的VPS第一步该做什么：安全初始化指南 - 主机评测笔记"><meta property="og:description" content="VPS到手后的安全初始化步骤，包括SSH安全配置、防火墙设置、自动更新等，保护你的服务器不被入侵。"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="主机评测笔记"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="新买的VPS第一步该做什么：安全初始化指南 - 主机评测笔记"><meta name="twitter:description" content="VPS到手后的安全初始化步骤，包括SSH安全配置、防火墙设置、自动更新等，保护你的服务器不被入侵。"><!-- Google Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/_slug_.CkE7_hWZ.css"></head> <body class="min-h-screen flex flex-col bg-surface"> <!-- Header --> <header class="bg-primary text-white shadow-lg sticky top-0 z-50"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex items-center justify-between h-16"> <a href="/" class="flex items-center gap-2 group"> <span class="text-2xl font-bold font-heading tracking-tight group-hover:text-accent-light transition-colors">
+主机评测笔记
+</span> </a> <nav class="hidden md:flex items-center gap-1"> <a href="/" class="px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> 首页 </a><a href="/tags/vps评测" class="px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> VPS评测 </a><a href="/tags/主机对比" class="px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> 主机对比 </a><a href="/tags/选购指南" class="px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> 选购指南 </a> </nav> <!-- Mobile menu button --> <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors" aria-label="打开菜单"> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> <!-- Mobile nav --> <nav id="mobile-menu" class="md:hidden hidden pb-4"> <a href="/" class="block px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> 首页 </a><a href="/tags/vps评测" class="block px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> VPS评测 </a><a href="/tags/主机对比" class="block px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> 主机对比 </a><a href="/tags/选购指南" class="block px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> 选购指南 </a> </nav> </div> </header> <!-- Main Content --> <main class="flex-1">  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"> <div class="flex flex-col lg:flex-row gap-8"> <!-- Main Content --> <article class="flex-1 min-w-0"> <div class="bg-white rounded-xl shadow-sm border border-border p-6 sm:p-8"> <!-- Post Header --> <header class="mb-8"> <h1 class="text-2xl sm:text-3xl font-bold font-heading text-primary leading-tight mb-4"> 新买的VPS第一步该做什么：安全初始化指南 </h1> <div class="flex flex-wrap items-center gap-4 text-sm text-text-muted"> <time datetime="2026-02-14T00:00:00.000Z" class="flex items-center gap-1.5"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path> </svg> 2026年2月14日 </time> <div class="flex flex-wrap gap-2"> <a href="/tags/选购指南" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 transition-colors"> 选购指南 </a><a href="/tags/VPS安全" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 transition-colors"> VPS安全 </a><a href="/tags/服务器配置" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 transition-colors"> 服务器配置 </a> </div> </div> </header> <!-- Post Content --> <div class="prose max-w-none">  <h2 id="为什么安全初始化很重要">为什么安全初始化很重要</h2>
+<p>新买的VPS就像一栋没有锁门的房子——任何人都可以来试试运气。你可能觉得”我的VPS上又没什么重要数据”，但现实是：<strong>你的VPS在开通后几分钟内就会被扫描到</strong>。</p>
+<p>我曾经开了一台VPS什么都不做，24小时后查看SSH日志：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">grep</span><span style="color:#9ECBFF"> "Failed password"</span><span style="color:#9ECBFF"> /var/log/auth.log</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> wc</span><span style="color:#79B8FF"> -l</span></span>
+<span class="line"><span style="color:#6A737D"># 结果: 12847</span></span></code></pre>
+<p>一天之内有12847次暴力破解尝试。所以安全初始化不是可选项，是必选项。</p>
+<h2 id="第一步更新系统">第一步：更新系统</h2>
+<p>SSH连接到VPS后，第一件事是更新系统：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Ubuntu/Debian</span></span>
+<span class="line"><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> update</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> upgrade</span><span style="color:#79B8FF"> -y</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># CentOS/Rocky Linux</span></span>
+<span class="line"><span style="color:#B392F0">dnf</span><span style="color:#9ECBFF"> update</span><span style="color:#79B8FF"> -y</span></span></code></pre>
+<p>系统自带的软件包可能有已知漏洞，更新到最新版可以堵上大部分安全隐患。</p>
+<h2 id="第二步创建新用户">第二步：创建新用户</h2>
+<p>不要直接用root账号日常操作，创建一个普通用户：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 创建用户</span></span>
+<span class="line"><span style="color:#B392F0">adduser</span><span style="color:#9ECBFF"> myuser</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 赋予sudo权限</span></span>
+<span class="line"><span style="color:#B392F0">usermod</span><span style="color:#79B8FF"> -aG</span><span style="color:#9ECBFF"> sudo</span><span style="color:#9ECBFF"> myuser</span><span style="color:#6A737D">  # Ubuntu/Debian</span></span>
+<span class="line"><span style="color:#6A737D"># 或</span></span>
+<span class="line"><span style="color:#B392F0">usermod</span><span style="color:#79B8FF"> -aG</span><span style="color:#9ECBFF"> wheel</span><span style="color:#9ECBFF"> myuser</span><span style="color:#6A737D">  # CentOS</span></span></code></pre>
+<p>以后用这个新用户登录，需要管理员权限时用sudo。</p>
+<h2 id="第三步配置ssh安全">第三步：配置SSH安全</h2>
+<p>这是最关键的一步。</p>
+<h3 id="31-修改ssh端口">3.1 修改SSH端口</h3>
+<p>默认的22端口是扫描机器人的首选目标，换个端口能过滤掉99%的自动化攻击：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">vim</span><span style="color:#9ECBFF"> /etc/ssh/sshd_config</span></span></code></pre>
+<p>找到 <code>#Port 22</code>，改为：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Port 58234  # 换成你喜欢的端口号(1024-65535之间)</span></span></code></pre>
+<h3 id="32-配置密钥登录">3.2 配置密钥登录</h3>
+<p>密钥认证比密码安全得多。</p>
+<p>在你的<strong>本地电脑</strong>上生成密钥对：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ssh-keygen</span><span style="color:#79B8FF"> -t</span><span style="color:#9ECBFF"> ed25519</span><span style="color:#79B8FF"> -C</span><span style="color:#9ECBFF"> "mykey"</span></span></code></pre>
+<p>把公钥上传到VPS：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ssh-copy-id</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 58234</span><span style="color:#9ECBFF"> myuser@你的VPS_IP</span></span></code></pre>
+<h3 id="33-禁用密码登录和root登录">3.3 禁用密码登录和root登录</h3>
+<p>确认密钥登录正常后，禁用密码登录：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">vim</span><span style="color:#9ECBFF"> /etc/ssh/sshd_config</span></span></code></pre>
+<p>修改以下配置：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PasswordAuthentication no</span></span>
+<span class="line"><span>PermitRootLogin no</span></span>
+<span class="line"><span>PubkeyAuthentication yes</span></span></code></pre>
+<p>重启SSH：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> restart</span><span style="color:#9ECBFF"> sshd</span></span></code></pre>
+<p><strong>重要</strong>：修改前一定要确认密钥登录正常！否则你会把自己锁在外面。建议保持当前终端不关，新开一个终端测试登录。</p>
+<h2 id="第四步配置防火墙">第四步：配置防火墙</h2>
+<h3 id="ufwubuntu推荐">UFW（Ubuntu推荐）</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 安装</span></span>
+<span class="line"><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> ufw</span><span style="color:#79B8FF"> -y</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 允许你的SSH端口</span></span>
+<span class="line"><span style="color:#B392F0">ufw</span><span style="color:#9ECBFF"> allow</span><span style="color:#9ECBFF"> 58234/tcp</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 允许HTTP和HTTPS</span></span>
+<span class="line"><span style="color:#B392F0">ufw</span><span style="color:#9ECBFF"> allow</span><span style="color:#9ECBFF"> 80/tcp</span></span>
+<span class="line"><span style="color:#B392F0">ufw</span><span style="color:#9ECBFF"> allow</span><span style="color:#9ECBFF"> 443/tcp</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 启用防火墙</span></span>
+<span class="line"><span style="color:#B392F0">ufw</span><span style="color:#9ECBFF"> enable</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 查看规则</span></span>
+<span class="line"><span style="color:#B392F0">ufw</span><span style="color:#9ECBFF"> status</span></span></code></pre>
+<h3 id="firewalldcentos推荐">firewalld（CentOS推荐）</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 允许SSH端口</span></span>
+<span class="line"><span style="color:#B392F0">firewall-cmd</span><span style="color:#79B8FF"> --permanent</span><span style="color:#79B8FF"> --add-port=58234/tcp</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 允许HTTP/HTTPS</span></span>
+<span class="line"><span style="color:#B392F0">firewall-cmd</span><span style="color:#79B8FF"> --permanent</span><span style="color:#79B8FF"> --add-service=http</span></span>
+<span class="line"><span style="color:#B392F0">firewall-cmd</span><span style="color:#79B8FF"> --permanent</span><span style="color:#79B8FF"> --add-service=https</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 重载配置</span></span>
+<span class="line"><span style="color:#B392F0">firewall-cmd</span><span style="color:#79B8FF"> --reload</span></span></code></pre>
+<p>防火墙规则参考：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>端口</th><th>用途</th><th>是否开放</th></tr></thead><tbody><tr><td>22</td><td>SSH(已更改)</td><td>关闭</td></tr><tr><td>58234</td><td>SSH(新端口)</td><td>开放</td></tr><tr><td>80</td><td>HTTP</td><td>开放</td></tr><tr><td>443</td><td>HTTPS</td><td>开放</td></tr><tr><td>3306</td><td>MySQL</td><td>关闭(仅本地)</td></tr><tr><td>6379</td><td>Redis</td><td>关闭(仅本地)</td></tr></tbody></table>
+<p>数据库和缓存服务的端口千万不要对外开放。</p>
+<h2 id="第五步安装fail2ban">第五步：安装Fail2ban</h2>
+<p>Fail2ban会自动封禁暴力破解的IP：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 安装</span></span>
+<span class="line"><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> fail2ban</span><span style="color:#79B8FF"> -y</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 创建本地配置</span></span>
+<span class="line"><span style="color:#B392F0">cp</span><span style="color:#9ECBFF"> /etc/fail2ban/jail.conf</span><span style="color:#9ECBFF"> /etc/fail2ban/jail.local</span></span>
+<span class="line"><span style="color:#B392F0">vim</span><span style="color:#9ECBFF"> /etc/fail2ban/jail.local</span></span></code></pre>
+<p>关键配置：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ini"><code><span class="line"><span style="color:#B392F0">[sshd]</span></span>
+<span class="line"><span style="color:#F97583">enabled</span><span style="color:#E1E4E8"> = true</span></span>
+<span class="line"><span style="color:#F97583">port</span><span style="color:#E1E4E8"> = 58234</span></span>
+<span class="line"><span style="color:#F97583">filter</span><span style="color:#E1E4E8"> = sshd</span></span>
+<span class="line"><span style="color:#F97583">logpath</span><span style="color:#E1E4E8"> = /var/log/auth.log</span></span>
+<span class="line"><span style="color:#F97583">maxretry</span><span style="color:#E1E4E8"> = 3</span></span>
+<span class="line"><span style="color:#F97583">bantime</span><span style="color:#E1E4E8"> = 3600</span></span>
+<span class="line"><span style="color:#F97583">findtime</span><span style="color:#E1E4E8"> = 600</span></span></code></pre>
+<p>这样配置后，10分钟内SSH登录失败3次就会被封禁1小时。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 启动</span></span>
+<span class="line"><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> enable</span><span style="color:#9ECBFF"> fail2ban</span></span>
+<span class="line"><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> start</span><span style="color:#9ECBFF"> fail2ban</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 查看封禁状态</span></span>
+<span class="line"><span style="color:#B392F0">fail2ban-client</span><span style="color:#9ECBFF"> status</span><span style="color:#9ECBFF"> sshd</span></span></code></pre>
+<h2 id="第六步配置自动安全更新">第六步：配置自动安全更新</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Ubuntu/Debian</span></span>
+<span class="line"><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> unattended-upgrades</span><span style="color:#79B8FF"> -y</span></span>
+<span class="line"><span style="color:#B392F0">dpkg-reconfigure</span><span style="color:#79B8FF"> --priority=low</span><span style="color:#9ECBFF"> unattended-upgrades</span></span></code></pre>
+<p>这会自动安装安全更新，不需要你手动操作。</p>
+<h2 id="第七步设置时区和时间同步">第七步：设置时区和时间同步</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 设置时区</span></span>
+<span class="line"><span style="color:#B392F0">timedatectl</span><span style="color:#9ECBFF"> set-timezone</span><span style="color:#9ECBFF"> Asia/Shanghai</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 确认NTP同步开启</span></span>
+<span class="line"><span style="color:#B392F0">timedatectl</span><span style="color:#9ECBFF"> status</span></span></code></pre>
+<p>时间不准会导致SSL证书问题、日志混乱等一系列奇怪的bug。</p>
+<h2 id="安全检查清单">安全检查清单</h2>
+<p>完成所有配置后，对照这个清单检查一下：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>检查项</th><th>状态</th></tr></thead><tbody><tr><td>系统已更新到最新</td><td>[ ]</td></tr><tr><td>创建了非root用户</td><td>[ ]</td></tr><tr><td>SSH端口已修改</td><td>[ ]</td></tr><tr><td>密钥登录已配置</td><td>[ ]</td></tr><tr><td>密码登录已禁用</td><td>[ ]</td></tr><tr><td>root登录已禁用</td><td>[ ]</td></tr><tr><td>防火墙已启用</td><td>[ ]</td></tr><tr><td>只开放了必要端口</td><td>[ ]</td></tr><tr><td>Fail2ban已安装</td><td>[ ]</td></tr><tr><td>自动更新已配置</td><td>[ ]</td></tr></tbody></table>
+<h2 id="进阶安全措施">进阶安全措施</h2>
+<p>基础安全做完后，如果你想更进一步：</p>
+<h3 id="禁用ipv6如果不需要">禁用IPv6（如果不需要）</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "net.ipv6.conf.all.disable_ipv6 = 1"</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> /etc/sysctl.conf</span></span>
+<span class="line"><span style="color:#B392F0">sysctl</span><span style="color:#79B8FF"> -p</span></span></code></pre>
+<h3 id="配置swap">配置swap</h3>
+<p>内存不足时swap可以防止OOM杀掉进程：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">fallocate</span><span style="color:#79B8FF"> -l</span><span style="color:#9ECBFF"> 1G</span><span style="color:#9ECBFF"> /swapfile</span></span>
+<span class="line"><span style="color:#B392F0">chmod</span><span style="color:#79B8FF"> 600</span><span style="color:#9ECBFF"> /swapfile</span></span>
+<span class="line"><span style="color:#B392F0">mkswap</span><span style="color:#9ECBFF"> /swapfile</span></span>
+<span class="line"><span style="color:#B392F0">swapon</span><span style="color:#9ECBFF"> /swapfile</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> '/swapfile none swap sw 0 0'</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> /etc/fstab</span></span></code></pre>
+<h3 id="设置定时备份">设置定时备份</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 每天凌晨3点备份网站数据</span></span>
+<span class="line"><span style="color:#B392F0">0</span><span style="color:#79B8FF"> 3</span><span style="color:#79B8FF"> *</span><span style="color:#79B8FF"> *</span><span style="color:#79B8FF"> *</span><span style="color:#9ECBFF"> tar</span><span style="color:#79B8FF"> -czf</span><span style="color:#9ECBFF"> /backup/site-</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +</span><span style="color:#79B8FF">\%</span><span style="color:#9ECBFF">Y</span><span style="color:#79B8FF">\%</span><span style="color:#9ECBFF">m</span><span style="color:#79B8FF">\%</span><span style="color:#9ECBFF">d</span><span style="color:#E1E4E8">)</span><span style="color:#9ECBFF">.tar.gz</span><span style="color:#9ECBFF"> /var/www/html</span></span>
+<span class="line"><span style="color:#6A737D"># 每天凌晨4点备份数据库</span></span>
+<span class="line"><span style="color:#B392F0">0</span><span style="color:#79B8FF"> 4</span><span style="color:#79B8FF"> *</span><span style="color:#79B8FF"> *</span><span style="color:#79B8FF"> *</span><span style="color:#9ECBFF"> mysqldump</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> root</span><span style="color:#79B8FF"> --all-databases</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gzip</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> /backup/db-</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +</span><span style="color:#79B8FF">\%</span><span style="color:#9ECBFF">Y</span><span style="color:#79B8FF">\%</span><span style="color:#9ECBFF">m</span><span style="color:#79B8FF">\%</span><span style="color:#9ECBFF">d</span><span style="color:#E1E4E8">)</span><span style="color:#9ECBFF">.sql.gz</span></span></code></pre>
+<h2 id="常见安全误区">常见安全误区</h2>
+<h3 id="误区1我用了密钥就安全了">误区1：“我用了密钥就安全了”</h3>
+<p>密钥登录确实安全，但如果你的私钥文件泄露了照样完蛋。保管好你的私钥文件，设置一个强密码保护。</p>
+<h3 id="误区2防火墙开了就行了">误区2：“防火墙开了就行了”</h3>
+<p>防火墙只能阻止未授权的端口访问，不能防止应用层面的攻击。Web应用本身的漏洞（比如WordPress插件漏洞）还是要注意更新。</p>
+<h3 id="误区3便宜vps不需要安全配置">误区3：“便宜VPS不需要安全配置”</h3>
+<p>恰恰相反，便宜VPS更容易被盯上。攻击者喜欢利用配置不当的VPS作为跳板或者挖矿。</p>
+<h2 id="总结">总结</h2>
+<p>安全初始化大约需要30-60分钟，但这个时间投入绝对值得。做好了基本上不会有什么安全问题。如果你还没买VPS，先看看<a href="/posts/jianzhanyonghu-vps-tuijian/">新手VPS选购指南</a>选一台合适的。</p>
+<p>安全配置完成后就可以开始安装Web环境和部署网站了。如果网站加载速度不理想，看看<a href="/posts/vps-jiasu-fangan/">VPS网站加速方案</a>。</p>  </div> </div> </article> <!-- Sidebar --> <aside class="lg:w-80 shrink-0"> <div class="lg:sticky lg:top-24 space-y-6"> <!-- Popular Posts --> <div class="bg-white rounded-xl shadow-sm border border-border p-6"> <h3 class="font-heading text-lg font-semibold text-primary mb-4 pb-2 border-b-2 border-accent">
+热门文章
+</h3> <ul class="space-y-3"> <li> <a href="#" class="flex items-start gap-3 group"> <span class="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5"> 1 </span> <span class="text-sm text-text group-hover:text-accent transition-colors leading-snug"> 2024年最佳VPS推荐 </span> </a> </li><li> <a href="#" class="flex items-start gap-3 group"> <span class="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5"> 2 </span> <span class="text-sm text-text group-hover:text-accent transition-colors leading-snug"> 搬瓦工 vs Vultr 全面对比 </span> </a> </li><li> <a href="#" class="flex items-start gap-3 group"> <span class="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5"> 3 </span> <span class="text-sm text-text group-hover:text-accent transition-colors leading-snug"> VPS性能测试方法指南 </span> </a> </li><li> <a href="#" class="flex items-start gap-3 group"> <span class="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5"> 4 </span> <span class="text-sm text-text group-hover:text-accent transition-colors leading-snug"> 新手选购VPS注意事项 </span> </a> </li><li> <a href="#" class="flex items-start gap-3 group"> <span class="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5"> 5 </span> <span class="text-sm text-text group-hover:text-accent transition-colors leading-snug"> 便宜好用的VPS排行榜 </span> </a> </li> </ul> </div> <!-- Tags --> <div class="bg-white rounded-xl shadow-sm border border-border p-6"> <h3 class="font-heading text-lg font-semibold text-primary mb-4 pb-2 border-b-2 border-accent">
+分类标签
+</h3> <div class="flex flex-wrap gap-2"> <a href="/tags/VPS评测" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> VPS评测 </a><a href="/tags/主机对比" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> 主机对比 </a><a href="/tags/选购指南" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> 选购指南 </a><a href="/tags/性能测试" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> 性能测试 </a><a href="/tags/搬瓦工" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> 搬瓦工 </a><a href="/tags/Vultr" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> Vultr </a><a href="/tags/DigitalOcean" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> DigitalOcean </a><a href="/tags/Linode" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> Linode </a><a href="/tags/建站教程" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> 建站教程 </a><a href="/tags/优惠活动" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> 优惠活动 </a> </div> </div> </div> </aside> </div> </div>  </main> <!-- Footer --> <footer class="bg-primary-dark text-white/70 mt-auto"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <div> <h3 class="font-heading text-lg font-semibold text-white mb-3">主机评测笔记</h3> <p class="text-sm leading-relaxed">
+专注于VPS主机评测与对比分析，提供真实的性能测试数据和选购建议，帮助用户找到最适合自己的服务器方案。
+</p> </div> <div> <h3 class="font-heading text-lg font-semibold text-white mb-3">快速导航</h3> <ul class="space-y-2 text-sm"> <li> <a href="/" class="hover:text-accent-light transition-colors">首页</a> </li><li> <a href="/tags/vps评测" class="hover:text-accent-light transition-colors">VPS评测</a> </li><li> <a href="/tags/主机对比" class="hover:text-accent-light transition-colors">主机对比</a> </li><li> <a href="/tags/选购指南" class="hover:text-accent-light transition-colors">选购指南</a> </li> </ul> </div> <div> <h3 class="font-heading text-lg font-semibold text-white mb-3">关于本站</h3> <p class="text-sm leading-relaxed">
+所有评测内容均基于实际使用体验，测试数据真实可靠。我们致力于为中文用户提供高质量的主机评测内容。
+</p> </div> </div> <div class="border-t border-white/10 mt-8 pt-6 text-center text-sm"> <p>&copy; 2026 主机评测笔记 - 保留所有权利</p> </div> </div> </footer> <!-- Mobile menu script --> <script type="module">const e=document.getElementById("mobile-menu-btn"),n=document.getElementById("mobile-menu");e?.addEventListener("click",()=>{n?.classList.toggle("hidden")});</script> </body> </html>

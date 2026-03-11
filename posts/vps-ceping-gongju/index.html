@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro v5.17.3"><link rel="canonical" href="https://cliatlas.com/posts/vps-ceping-gongju/"><!-- SEO Meta --><title>VPS性能测试常用工具和脚本推荐 - 主机评测笔记</title><meta name="description" content="整理VPS测试常用的工具和一键脚本，包括CPU跑分、磁盘IO、网络速度、路由追踪等。"><meta name="keywords" content="VPS测试工具, VPS测速脚本, VPS性能测试"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://cliatlas.com/posts/vps-ceping-gongju/"><meta property="og:title" content="VPS性能测试常用工具和脚本推荐 - 主机评测笔记"><meta property="og:description" content="整理VPS测试常用的工具和一键脚本，包括CPU跑分、磁盘IO、网络速度、路由追踪等。"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="主机评测笔记"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="VPS性能测试常用工具和脚本推荐 - 主机评测笔记"><meta name="twitter:description" content="整理VPS测试常用的工具和一键脚本，包括CPU跑分、磁盘IO、网络速度、路由追踪等。"><!-- Google Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/_slug_.CkE7_hWZ.css"></head> <body class="min-h-screen flex flex-col bg-surface"> <!-- Header --> <header class="bg-primary text-white shadow-lg sticky top-0 z-50"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex items-center justify-between h-16"> <a href="/" class="flex items-center gap-2 group"> <span class="text-2xl font-bold font-heading tracking-tight group-hover:text-accent-light transition-colors">
+主机评测笔记
+</span> </a> <nav class="hidden md:flex items-center gap-1"> <a href="/" class="px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> 首页 </a><a href="/tags/vps评测" class="px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> VPS评测 </a><a href="/tags/主机对比" class="px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> 主机对比 </a><a href="/tags/选购指南" class="px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> 选购指南 </a> </nav> <!-- Mobile menu button --> <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors" aria-label="打开菜单"> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> <!-- Mobile nav --> <nav id="mobile-menu" class="md:hidden hidden pb-4"> <a href="/" class="block px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> 首页 </a><a href="/tags/vps评测" class="block px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> VPS评测 </a><a href="/tags/主机对比" class="block px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> 主机对比 </a><a href="/tags/选购指南" class="block px-4 py-2 rounded-lg text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 transition-all"> 选购指南 </a> </nav> </div> </header> <!-- Main Content --> <main class="flex-1">  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"> <div class="flex flex-col lg:flex-row gap-8"> <!-- Main Content --> <article class="flex-1 min-w-0"> <div class="bg-white rounded-xl shadow-sm border border-border p-6 sm:p-8"> <!-- Post Header --> <header class="mb-8"> <h1 class="text-2xl sm:text-3xl font-bold font-heading text-primary leading-tight mb-4"> VPS性能测试常用工具和脚本推荐 </h1> <div class="flex flex-wrap items-center gap-4 text-sm text-text-muted"> <time datetime="2026-02-07T00:00:00.000Z" class="flex items-center gap-1.5"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path> </svg> 2026年2月7日 </time> <div class="flex flex-wrap gap-2"> <a href="/tags/主机对比" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 transition-colors"> 主机对比 </a><a href="/tags/VPS工具" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 transition-colors"> VPS工具 </a><a href="/tags/性能测试" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 transition-colors"> 性能测试 </a> </div> </div> </header> <!-- Post Content --> <div class="prose max-w-none">  <h2 id="为什么要测试vps">为什么要测试VPS</h2>
+<p>买到VPS后第一件事不是装网站，而是跑测试。原因很简单——<strong>你买到的配置不一定是标称的</strong>。特别是便宜VPS，超售是常态。跑个测试确认性能正常，不正常就去找客服或者退款。</p>
+<p>这篇文章整理了我常用的VPS测试工具和脚本，从入门到进阶都有。</p>
+<h2 id="一键测试脚本">一键测试脚本</h2>
+<p>最方便的方式是用一键脚本，一条命令搞定所有基础测试。</p>
+<h3 id="1-benchsh最常用">1. bench.sh（最常用）</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">wget</span><span style="color:#79B8FF"> -qO-</span><span style="color:#9ECBFF"> bench.sh</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span></code></pre>
+<p>这个脚本会测试：</p>
+<ul>
+<li>系统信息（CPU、内存、硬盘）</li>
+<li>磁盘IO速度</li>
+<li>全球各节点下载速度</li>
+</ul>
+<p>输出结果示例：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>测试项</th><th>说明</th></tr></thead><tbody><tr><td>CPU Model</td><td>CPU型号和频率</td></tr><tr><td>CPU Cores</td><td>CPU核心数</td></tr><tr><td>Total Disk</td><td>硬盘大小</td></tr><tr><td>Total RAM</td><td>内存大小</td></tr><tr><td>I/O Speed</td><td>磁盘IO平均速度</td></tr><tr><td>Speedtest</td><td>各地区下载上传速度</td></tr></tbody></table>
+<p><strong>优点</strong>：简单快速，一两分钟出结果
+<strong>缺点</strong>：IO测试比较粗糙，没有IOPS数据</p>
+<h3 id="2-lemonbench">2. LemonBench</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">wget</span><span style="color:#79B8FF"> -qO-</span><span style="color:#9ECBFF"> https://raw.githubusercontent.com/LemonBench/LemonBench/main/LemonBench.sh</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span><span style="color:#79B8FF"> -s</span><span style="color:#79B8FF"> --</span><span style="color:#79B8FF"> --full</span></span></code></pre>
+<p>LemonBench比bench.sh更全面，增加了：</p>
+<ul>
+<li>Geekbench跑分</li>
+<li>更详细的IO测试</li>
+<li>路由追踪（国内三网）</li>
+<li>流媒体解锁测试</li>
+</ul>
+<p>测试时间较长，大约需要10-20分钟。</p>
+<h3 id="3-yabs-yet-another-bench-script">3. YABS (Yet Another Bench Script)</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -sL</span><span style="color:#9ECBFF"> yabs.sh</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span></code></pre>
+<p>YABS的特点是使用fio做IO测试，数据更准确：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>fio Disk Speed Tests (Mixed R/W 50/50):</span></span>
+<span class="line"><span>---------------------------------</span></span>
+<span class="line"><span>Block Size | 4k            (IOPS) | 64k           (IOPS)</span></span>
+<span class="line"><span>  ------   | ---            ----  | ----           ----</span></span>
+<span class="line"><span>Read       | 156.23 MB/s  (39.0k) | 823.54 MB/s  (12.8k)</span></span>
+<span class="line"><span>Write      | 156.64 MB/s  (39.1k) | 828.03 MB/s  (12.9k)</span></span></code></pre>
+<p>还会跑Geekbench 6并给出在线结果链接。</p>
+<h2 id="cpu测试工具">CPU测试工具</h2>
+<h3 id="sysbench">sysbench</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 安装</span></span>
+<span class="line"><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> sysbench</span><span style="color:#79B8FF"> -y</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 单核测试</span></span>
+<span class="line"><span style="color:#B392F0">sysbench</span><span style="color:#9ECBFF"> cpu</span><span style="color:#79B8FF"> --cpu-max-prime=20000</span><span style="color:#79B8FF"> --threads=1</span><span style="color:#9ECBFF"> run</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 多核测试</span></span>
+<span class="line"><span style="color:#B392F0">sysbench</span><span style="color:#9ECBFF"> cpu</span><span style="color:#79B8FF"> --cpu-max-prime=20000</span><span style="color:#79B8FF"> --threads=$(</span><span style="color:#B392F0">nproc</span><span style="color:#79B8FF">)</span><span style="color:#9ECBFF"> run</span></span></code></pre>
+<p>events per second越高越好。参考值：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>VPS档次</th><th>单核events/s</th></tr></thead><tbody><tr><td>低端 ($2-3/月)</td><td>1500-2500</td></tr><tr><td>中端 ($5-6/月)</td><td>2500-4500</td></tr><tr><td>高端 ($10+/月)</td><td>4500+</td></tr></tbody></table>
+<h3 id="geekbench-6">Geekbench 6</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 下载Geekbench 6</span></span>
+<span class="line"><span style="color:#B392F0">wget</span><span style="color:#9ECBFF"> https://cdn.geekbench.com/Geekbench-6.3.0-Linux.tar.gz</span></span>
+<span class="line"><span style="color:#B392F0">tar</span><span style="color:#9ECBFF"> xzf</span><span style="color:#9ECBFF"> Geekbench-6.3.0-Linux.tar.gz</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> Geekbench-6.3.0-Linux</span></span>
+<span class="line"><span style="color:#B392F0">./geekbench6</span></span></code></pre>
+<p>Geekbench会给出在线结果页面，可以跟其他设备对比。不过它比较吃内存，512MB内存的VPS可能跑不了。</p>
+<h2 id="磁盘io测试">磁盘IO测试</h2>
+<h3 id="fio最专业">fio（最专业）</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> fio</span><span style="color:#79B8FF"> -y</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 4K随机读测试</span></span>
+<span class="line"><span style="color:#B392F0">fio</span><span style="color:#79B8FF"> --name=randread</span><span style="color:#79B8FF"> --ioengine=libaio</span><span style="color:#79B8FF"> --iodepth=32</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">    --rw=randread</span><span style="color:#79B8FF"> --bs=4k</span><span style="color:#79B8FF"> --direct=1</span><span style="color:#79B8FF"> --size=1G</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">    --numjobs=1</span><span style="color:#79B8FF"> --runtime=60</span><span style="color:#79B8FF"> --group_reporting</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 4K随机写测试</span></span>
+<span class="line"><span style="color:#B392F0">fio</span><span style="color:#79B8FF"> --name=randwrite</span><span style="color:#79B8FF"> --ioengine=libaio</span><span style="color:#79B8FF"> --iodepth=32</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">    --rw=randwrite</span><span style="color:#79B8FF"> --bs=4k</span><span style="color:#79B8FF"> --direct=1</span><span style="color:#79B8FF"> --size=1G</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">    --numjobs=1</span><span style="color:#79B8FF"> --runtime=60</span><span style="color:#79B8FF"> --group_reporting</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 顺序读写测试</span></span>
+<span class="line"><span style="color:#B392F0">fio</span><span style="color:#79B8FF"> --name=seqread</span><span style="color:#79B8FF"> --ioengine=libaio</span><span style="color:#79B8FF"> --iodepth=32</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">    --rw=read</span><span style="color:#79B8FF"> --bs=1M</span><span style="color:#79B8FF"> --direct=1</span><span style="color:#79B8FF"> --size=1G</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">    --numjobs=1</span><span style="color:#79B8FF"> --runtime=60</span><span style="color:#79B8FF"> --group_reporting</span></span></code></pre>
+<p>fio的结果最准确，也是业内标准。IOPS参考值：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>存储类型</th><th>4K随机读IOPS</th></tr></thead><tbody><tr><td>HDD</td><td>100-300</td></tr><tr><td>SSD</td><td>3,000-30,000</td></tr><tr><td>NVMe</td><td>30,000-200,000</td></tr></tbody></table>
+<h3 id="dd简单粗暴">dd（简单粗暴）</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">dd</span><span style="color:#9ECBFF"> if=/dev/zero</span><span style="color:#9ECBFF"> of=test</span><span style="color:#9ECBFF"> bs=1M</span><span style="color:#9ECBFF"> count=</span><span style="color:#79B8FF">1024</span><span style="color:#9ECBFF"> oflag=dsync</span></span></code></pre>
+<p>dd只能测顺序写入速度，不能测IOPS。但胜在简单，一条命令就行。</p>
+<h2 id="网络测试工具">网络测试工具</h2>
+<h3 id="speedtest-cli">speedtest-cli</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 安装</span></span>
+<span class="line"><span style="color:#B392F0">pip3</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> speedtest-cli</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 测试</span></span>
+<span class="line"><span style="color:#B392F0">speedtest-cli</span><span style="color:#79B8FF"> --simple</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 指定服务器</span></span>
+<span class="line"><span style="color:#B392F0">speedtest-cli</span><span style="color:#79B8FF"> --server</span><span style="color:#79B8FF"> 5530</span><span style="color:#6A737D">  # 指定测速服务器ID</span></span></code></pre>
+<h3 id="iperf3更准确">iperf3（更准确）</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 安装</span></span>
+<span class="line"><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> iperf3</span><span style="color:#79B8FF"> -y</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 测试到指定服务器</span></span>
+<span class="line"><span style="color:#B392F0">iperf3</span><span style="color:#79B8FF"> -c</span><span style="color:#9ECBFF"> bouygues.iperf.fr</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 5200</span></span></code></pre>
+<h3 id="三网测速脚本">三网测速脚本</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">bash</span><span style="color:#9ECBFF"> &#x3C;(</span><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -sL</span><span style="color:#9ECBFF"> https://raw.githubusercontent.com/i-abc/Speedtest/main/speedtest.sh)</span></span></code></pre>
+<p>这个脚本会分别测试电信、联通、移动三网的速度，对国内用户特别有用。</p>
+<h2 id="路由追踪">路由追踪</h2>
+<h3 id="besttrace">BestTrace</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">wget</span><span style="color:#9ECBFF"> https://cdn.ipip.net/17mon/besttrace4linux.zip</span></span>
+<span class="line"><span style="color:#B392F0">unzip</span><span style="color:#9ECBFF"> besttrace4linux.zip</span></span>
+<span class="line"><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +x</span><span style="color:#9ECBFF"> besttrace</span></span>
+<span class="line"><span style="color:#B392F0">./besttrace</span><span style="color:#79B8FF"> -q1</span><span style="color:#9ECBFF"> 目标IP</span></span></code></pre>
+<p>BestTrace会显示每一跳的地理位置和运营商信息，方便判断线路走向。</p>
+<h3 id="nexttrace">nexttrace</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">curl</span><span style="color:#9ECBFF"> nxtrace.org/nt</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span>
+<span class="line"><span style="color:#B392F0">nexttrace</span><span style="color:#9ECBFF"> 目标IP</span></span></code></pre>
+<p>nexttrace是BestTrace的替代品，界面更好看，更新也更频繁。</p>
+<h2 id="综合测试建议">综合测试建议</h2>
+<p>根据你的需求选择不同的测试组合：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>需求</th><th>推荐工具</th><th>测试时间</th></tr></thead><tbody><tr><td>快速确认性能</td><td>bench.sh</td><td>2分钟</td></tr><tr><td>详细性能报告</td><td>YABS + LemonBench</td><td>20-30分钟</td></tr><tr><td>IO深度测试</td><td>fio</td><td>5-10分钟</td></tr><tr><td>国内速度测试</td><td>三网测速 + BestTrace</td><td>5分钟</td></tr><tr><td>跑分对比</td><td>Geekbench 6</td><td>10分钟</td></tr></tbody></table>
+<p>我平时的测试流程是：先跑bench.sh快速看一眼，有问题再用fio详细测IO，然后用三网测速看网络情况。</p>
+<p>如果你想看各家VPS的实际跑分数据，我在<a href="/posts/vps-xingneng-duibi/">5款VPS跑分对比</a>里有详细的横向对比。</p>
+<p>买到VPS后除了跑测试，还要记得做好安全设置，参考<a href="/posts/vps-anquan-shezhi/">VPS安全初始化指南</a>。</p>
+<h2 id="注意事项">注意事项</h2>
+<ol>
+<li><strong>测试时避开高峰期</strong>：网络测试建议在不同时段多测几次</li>
+<li><strong>新机器先等等</strong>：刚开通的VPS可能还在初始化，等半小时再测</li>
+<li><strong>测试结果有波动</strong>：同一台机器不同时间测出来的数据会有差异，这是正常的</li>
+<li><strong>不要过度解读</strong>：跑分只是参考，实际应用性能才是最终标准</li>
+</ol>  </div> </div> </article> <!-- Sidebar --> <aside class="lg:w-80 shrink-0"> <div class="lg:sticky lg:top-24 space-y-6"> <!-- Popular Posts --> <div class="bg-white rounded-xl shadow-sm border border-border p-6"> <h3 class="font-heading text-lg font-semibold text-primary mb-4 pb-2 border-b-2 border-accent">
+热门文章
+</h3> <ul class="space-y-3"> <li> <a href="#" class="flex items-start gap-3 group"> <span class="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5"> 1 </span> <span class="text-sm text-text group-hover:text-accent transition-colors leading-snug"> 2024年最佳VPS推荐 </span> </a> </li><li> <a href="#" class="flex items-start gap-3 group"> <span class="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5"> 2 </span> <span class="text-sm text-text group-hover:text-accent transition-colors leading-snug"> 搬瓦工 vs Vultr 全面对比 </span> </a> </li><li> <a href="#" class="flex items-start gap-3 group"> <span class="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5"> 3 </span> <span class="text-sm text-text group-hover:text-accent transition-colors leading-snug"> VPS性能测试方法指南 </span> </a> </li><li> <a href="#" class="flex items-start gap-3 group"> <span class="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5"> 4 </span> <span class="text-sm text-text group-hover:text-accent transition-colors leading-snug"> 新手选购VPS注意事项 </span> </a> </li><li> <a href="#" class="flex items-start gap-3 group"> <span class="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5"> 5 </span> <span class="text-sm text-text group-hover:text-accent transition-colors leading-snug"> 便宜好用的VPS排行榜 </span> </a> </li> </ul> </div> <!-- Tags --> <div class="bg-white rounded-xl shadow-sm border border-border p-6"> <h3 class="font-heading text-lg font-semibold text-primary mb-4 pb-2 border-b-2 border-accent">
+分类标签
+</h3> <div class="flex flex-wrap gap-2"> <a href="/tags/VPS评测" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> VPS评测 </a><a href="/tags/主机对比" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> 主机对比 </a><a href="/tags/选购指南" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> 选购指南 </a><a href="/tags/性能测试" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> 性能测试 </a><a href="/tags/搬瓦工" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> 搬瓦工 </a><a href="/tags/Vultr" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> Vultr </a><a href="/tags/DigitalOcean" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> DigitalOcean </a><a href="/tags/Linode" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> Linode </a><a href="/tags/建站教程" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> 建站教程 </a><a href="/tags/优惠活动" class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-alt text-text-muted border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-all"> 优惠活动 </a> </div> </div> </div> </aside> </div> </div>  </main> <!-- Footer --> <footer class="bg-primary-dark text-white/70 mt-auto"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <div> <h3 class="font-heading text-lg font-semibold text-white mb-3">主机评测笔记</h3> <p class="text-sm leading-relaxed">
+专注于VPS主机评测与对比分析，提供真实的性能测试数据和选购建议，帮助用户找到最适合自己的服务器方案。
+</p> </div> <div> <h3 class="font-heading text-lg font-semibold text-white mb-3">快速导航</h3> <ul class="space-y-2 text-sm"> <li> <a href="/" class="hover:text-accent-light transition-colors">首页</a> </li><li> <a href="/tags/vps评测" class="hover:text-accent-light transition-colors">VPS评测</a> </li><li> <a href="/tags/主机对比" class="hover:text-accent-light transition-colors">主机对比</a> </li><li> <a href="/tags/选购指南" class="hover:text-accent-light transition-colors">选购指南</a> </li> </ul> </div> <div> <h3 class="font-heading text-lg font-semibold text-white mb-3">关于本站</h3> <p class="text-sm leading-relaxed">
+所有评测内容均基于实际使用体验，测试数据真实可靠。我们致力于为中文用户提供高质量的主机评测内容。
+</p> </div> </div> <div class="border-t border-white/10 mt-8 pt-6 text-center text-sm"> <p>&copy; 2026 主机评测笔记 - 保留所有权利</p> </div> </div> </footer> <!-- Mobile menu script --> <script type="module">const e=document.getElementById("mobile-menu-btn"),n=document.getElementById("mobile-menu");e?.addEventListener("click",()=>{n?.classList.toggle("hidden")});</script> </body> </html>
